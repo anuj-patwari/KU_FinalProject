@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
         }
 
         #region Game Timer
-        gameTimer += Time.deltaTime * 10000;
+        gameTimer += Time.deltaTime * 100;
 
         //int seconds = (int)(gameTimer % 60);
         minutes = (int)(gameTimer / 60) % 60;
