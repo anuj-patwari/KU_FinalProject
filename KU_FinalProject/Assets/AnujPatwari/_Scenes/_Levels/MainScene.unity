@@ -378,6 +378,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc0a535b21fd78e49a0c41671c0ec078, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fruit: {fileID: 8153409161895787120, guid: 621c13559488e57428afa48ce7469b36, type: 3}
+  everyHowManyDays: 3
 --- !u!1 &262765626
 GameObject:
   m_ObjectHideFlags: 0
@@ -981,7 +983,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fruit: {fileID: 8153409161895787120, guid: 621c13559488e57428afa48ce7469b36, type: 3}
+  everyHowManyDays: 0
   gameTimerText: {fileID: 848289917}
+  gameTimer: 0
+  minutes: 0
+  hours: 0
+  days: 0
 --- !u!4 &639590231
 Transform:
   m_ObjectHideFlags: 0
@@ -1542,7 +1549,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 9d6b87e4a022ade4dad91fb9b1c2ae87,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 9d6b87e4a022ade4dad91fb9b1c2ae87,
         type: 3}

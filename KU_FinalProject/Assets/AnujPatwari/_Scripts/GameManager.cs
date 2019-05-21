@@ -7,15 +7,19 @@ public class GameManager : MonoBehaviour
 {
 
     [SerializeField] GameObject fruit;
+    [SerializeField] int everyHowManyDays;
+    float counter;
 
     //Game Timer
     public Text gameTimerText;
-    float gameTimer = 0f;
+    public float gameTimer = 0f;
+    public int minutes, hours, days;
+    TreeScript ts;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        ts = FindObjectOfType<TreeScript>();
     }
 
     // Update is called once per frame
@@ -23,16 +27,16 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown("space"))
         {
-            Instantiate(fruit, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 10, gameObject.transform.position.z), gameObject.transform.rotation);
+
         }
 
         #region Game Timer
-        gameTimer += Time.deltaTime * 100;
+        gameTimer += Time.deltaTime * 10000;
 
         //int seconds = (int)(gameTimer % 60);
-        int minutes = (int)(gameTimer / 60) % 60;
-        int hours = (int)(gameTimer / 3600) % 24;
-        int days = (int)(gameTimer / 86400) % 365;
+        minutes = (int)(gameTimer / 60) % 60;
+        hours = (int)(gameTimer / 3600) % 24;
+        days = (int)(gameTimer / 86400) % 365;
 
         string timerString = string.Format("Day {0:00} Time: {1:00}:{2:00}", days, hours, minutes);
 
