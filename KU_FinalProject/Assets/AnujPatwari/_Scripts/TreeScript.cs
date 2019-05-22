@@ -7,7 +7,7 @@ public class TreeScript : MonoBehaviour
     GameManager gm;
     [SerializeField] GameObject fruit;
     public int everyHowManyDays = 3;
-    float counter = 10;
+    [SerializeField]float counter = 0;
 
     // Start is called before the first frame update
     void Start()

@@ -219,7 +219,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fruit: {fileID: 8153409161895787120, guid: 621c13559488e57428afa48ce7469b36, type: 3}
-  everyHowManyDays: 3
+  everyHowManyDays: 4
+  counter: 10
 --- !u!1001 &310651695
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -754,8 +755,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cfeb9cc83e434249865ea6080f282e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dayColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0}
+  nightColor: {r: 0, g: 0.14509805, b: 1, a: 1}
+  duration: 500
   fruit: {fileID: 8153409161895787120, guid: 621c13559488e57428afa48ce7469b36, type: 3}
-  everyHowManyDays: 0
   gameTimerText: {fileID: 848289917}
   gameTimer: 0
   minutes: 0
