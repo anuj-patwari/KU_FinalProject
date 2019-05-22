@@ -5,10 +5,11 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-
+    //Day and Night cycle variables
     public Color dayColor;
     public Color nightColor;
     public float duration;
+    public GameObject sun;
 
     [SerializeField] GameObject fruit;
 
@@ -30,20 +31,23 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        #region Day and Night cycle - Sky color change
         if (hours >= 6 && hours < 18)
         {
             RenderSettings.skybox.SetColor("_TintColor", Color.Lerp(RenderSettings.skybox.GetColor("_TintColor"), dayColor, 0.001f));
-            print("Get up");
         }
         else if (hours >= 18)
         {
             RenderSettings.skybox.SetColor("_TintColor", Color.Lerp(RenderSettings.skybox.GetColor("_TintColor"), nightColor, 0.001f));
-            print("Sleep");
         }
-        
+
+        sun.transform.RotateAround(new Vector3(0, 0, -32), Vector3.right, Time.deltaTime * 10f);
+        sun.transform.LookAt(new Vector3(0, 0, -32));
+        #endregion
 
         #region Game Timer
-        gameTimer += Time.deltaTime * 1000;
+        gameTimer += Time.deltaTime * 100;
         
         minutes = (int)(gameTimer / 60) % 60;
         hours = (int)(gameTimer / 3600) % 24;
@@ -54,5 +58,10 @@ public class GameManager : MonoBehaviour
         gameTimerText.text = timerString;
 
         #endregion
+    }
+
+    private void FixedUpdate()
+    {
+        //transform.LookAt(new Vector3(targetPos.x, 0f, targetPos.z));
     }
 }
