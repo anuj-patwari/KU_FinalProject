@@ -10,6 +10,11 @@ public class GameManager : MonoBehaviour
     public Color nightColor;
     public float duration;
     public GameObject sun;
+    public GameObject moon;
+
+    [Range(1, 15)]
+    [Tooltip("This is meant for testing only!")]
+    public int gameSpeed = 1;
 
     [SerializeField] GameObject fruit;
 
@@ -22,17 +27,19 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameSpeed = 15;
         ts = FindObjectOfType<TreeScript>();
         dayColor = new Color(128 / 255f, 128 / 255f, 128 / 255f);
         nightColor = new Color(0f, 37 / 255f, 1f);
-        RenderSettings.skybox.SetColor("_TintColor", nightColor);
+        RenderSettings.skybox.SetColor("_TintColor", dayColor);
+        gameTimer = 48600f;                 //Setting the time to 1 PM at start
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        #region Day and Night cycle - Sky color change
+        #region Day and Night cycle - Sky color change & Sun & Moon revolving
         if (hours >= 6 && hours < 18)
         {
             RenderSettings.skybox.SetColor("_TintColor", Color.Lerp(RenderSettings.skybox.GetColor("_TintColor"), dayColor, 0.001f));
@@ -42,8 +49,12 @@ public class GameManager : MonoBehaviour
             RenderSettings.skybox.SetColor("_TintColor", Color.Lerp(RenderSettings.skybox.GetColor("_TintColor"), nightColor, 0.001f));
         }
 
-        sun.transform.RotateAround(new Vector3(0, 0, -32), Vector3.right, Time.deltaTime * 10f);
+        sun.transform.RotateAround(new Vector3(0, 0, -32), Vector3.right, Time.deltaTime * 0.413f);
         sun.transform.LookAt(new Vector3(0, 0, -32));
+        moon.transform.RotateAround(new Vector3(0, 0, -32), Vector3.right, Time.deltaTime * 0.413f);
+        moon.transform.LookAt(new Vector3(0, 0, -32));
+
+        Time.timeScale = gameSpeed;
         #endregion
 
         #region Game Timer
