@@ -239,6 +239,15 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_MouseLook.LookRotation (transform, m_Camera.transform);
         }
 
+        private void OnEnable()
+        {
+            transform.GetChild(0).gameObject.SetActive(true);
+        }
+
+        private void OnDisable()
+        {
+            transform.GetChild(0).gameObject.SetActive(false);
+        }
 
         private void OnControllerColliderHit(ControllerColliderHit hit)
         {
