@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public GameObject sun;
     public GameObject moon;
 
-    [Range(1, 15)]
+    [Range(1, 45)]
     [Tooltip("This is meant for testing only!")]
     public int gameSpeed = 1;
 
@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameSpeed = 15;
+        gameSpeed = 45;
         ts = FindObjectOfType<TreeScript>();
         dayColor = new Color(128 / 255f, 128 / 255f, 128 / 255f);
         nightColor = new Color(0f, 37 / 255f, 1f);
