@@ -120,12 +120,14 @@ public class GameManager : MonoBehaviour
         foreach (GameObject character in Characters)
         {
             character.GetComponent<FirstPersonController>().enabled = false;
+
         }
         foreach (RawImage indicator in characterIndicators)
         {
             indicator.color = Color.white;
         }
         Characters[position].GetComponent<FirstPersonController>().enabled = true;
+
         characterIndicators[position].color = Color.green;
         if (currentCharacterID >= (Characters.Length - 1))
         {

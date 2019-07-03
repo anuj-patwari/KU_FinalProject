@@ -46,7 +46,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private void Start()
         {
             m_CharacterController = GetComponent<CharacterController>();
-            m_Camera = Camera.main;
+            m_Camera = transform.GetChild(0).gameObject.GetComponent<Camera>();
             m_OriginalCameraPosition = m_Camera.transform.localPosition;
             m_FovKick.Setup(m_Camera);
             m_HeadBob.Setup(m_Camera, m_StepInterval);
@@ -242,11 +242,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private void OnEnable()
         {
             transform.GetChild(0).gameObject.SetActive(true);
+            GetComponent<CharacterController>().enabled = true;
         }
 
         private void OnDisable()
         {
             transform.GetChild(0).gameObject.SetActive(false);
+            GetComponent<CharacterController>().enabled = false;
         }
 
         private void OnControllerColliderHit(ControllerColliderHit hit)
